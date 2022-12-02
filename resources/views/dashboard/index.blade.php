@@ -8,12 +8,19 @@
   </div>
 
   {{-- Balance, Incomes, Expenses, and Transaction --}}
-  @include('dashboard.d-card')
+  @include('layouts.card')
 
   {{-- Add Income and Expense --}}
   @include('dashboard.create')
 
   {{-- List of Transaction Today --}}
-  @include('dashboard.table')
+  <div class="card mt-3">
+    <div class="card-header">
+      Today Transactions
+    </div>
+    <div class="card-body">
+      @include('layouts.table')
+    </div>
+  </div>
 
 @endsection
