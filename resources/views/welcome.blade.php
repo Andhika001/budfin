@@ -20,7 +20,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+            <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.png" alt="..."></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
@@ -43,7 +43,7 @@
             <div class="masthead-subheading">Welcome To BudFin</div>
             <div class="masthead-heading text-uppercase">Your Personal Budgeting & Finance App</div>
             @auth
-              <a class="btn btn-primary btn-xl text-uppercase" href="/dashboard">Dashboard</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="/dashboard">Dashboard</a>
             @else
               <a class="btn btn-primary btn-xl text-uppercase" href="/dashboard">Get Started</a>
             @endauth
@@ -54,31 +54,31 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Features</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <br><br>
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                         <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">E-Commerce</h4>
+                    <h4 class="my-3">Track Your Expenses</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-circle fa-stack-2x text-secondary"></i>
                         <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">Responsive Design</h4>
+                    <h4 class="my-3">Easy to Use</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="fas fa-circle fa-stack-2x text-secondary"></i>
+                        <i class="fas fa-wallet fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">Web Security</h4>
+                    <h4 class="my-3">Organize Wallet</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
             </div>
