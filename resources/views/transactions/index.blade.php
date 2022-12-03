@@ -7,7 +7,6 @@
     <h6 class="text-muted">{{ date('j F Y') }}</h6>
   </div>
 
-
   @if (session()->has('success'))
     <div class="alert alert-success" role="alert">
       {{ session('success') }}

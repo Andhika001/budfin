@@ -12,8 +12,6 @@
           </div>
           <div class="col-auto">
             <i class="fa-solid fa-sack-dollar fa-2x opacity-25"></i>
-            {{-- <i class="fas fa-calendar fa-2x opacity-25"></i> --}}
-            {{-- <i class="fa-solid fa-calendar"></i> --}}
           </div>
         </div>
       </div>
@@ -28,13 +26,11 @@
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Incomes</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 
               {{-- sum all income transaction of auth user today --}}
-              {{ number_format( $user->transactions()->where('type', 'Income')->whereDate('created_at', date('Y-m-d'))->sum('amount'), 2,",",".") }}
+              {{ number_format( $user->transactions()->where('type', 'Income')->whereDate('date', date('Y-m-d'))->sum('amount'), 2,",",".") }}
             </div>
           </div>
           <div class="col-auto">
             <i class="fa-solid fa-hand-holding-dollar fa-2x opacity-25"></i>
-            {{-- <i class="fas fa-calendar fa-2x opacity-25"></i> --}}
-            {{-- <i class="fa-solid fa-calendar"></i> --}}
           </div>
         </div>
       </div>
@@ -49,13 +45,11 @@
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Expenses</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 
               {{-- sum all income transaction of auth user today --}}
-              {{ number_format( $user->transactions()->where('type', 'Expense')->whereDate('created_at', date('Y-m-d'))->sum('amount'), 2,",",".") }}
+              {{ number_format( $user->transactions()->where('type', 'Expense')->whereDate('date', date('Y-m-d'))->sum('amount'), 2,",",".") }}
             </div>
           </div>
           <div class="col-auto">
             <i class="fa-solid fa-cart-shopping fa-2x opacity-25"></i>
-            {{-- <i class="fas fa-calendar fa-2x opacity-25"></i> --}}
-            {{-- <i class="fa-solid fa-calendar"></i> --}}
           </div>
         </div>
       </div>
@@ -70,13 +64,11 @@
             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1"># of Transaction</div>
             <div class="h5 mb-0 font-weight-bold text-gray-800">
               {{-- count all transaction of auth user today --}}
-              {{ $user->transactions()->whereDate('created_at', date('Y-m-d'))->count() }}
+              {{ $user->transactions()->whereDate('date', date('Y-m-d'))->count() }}
             </div>
           </div>
           <div class="col-auto">
             <i class="fa-solid fa-hashtag fa-2x opacity-25"></i>
-            {{-- <i class="fas fa-calendar fa-2x opacity-25"></i> --}}
-            {{-- <i class="fa-solid fa-calendar"></i> --}}
           </div>
         </div>
       </div>
