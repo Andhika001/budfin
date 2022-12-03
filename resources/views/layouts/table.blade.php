@@ -12,18 +12,23 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ( $transactions as $transaction)
-        <tr class="text-center">
-          <th scope="row">{{ $loop->iteration }}</th>
-          <td>{{ $transaction->category->name }}</td>
-            <td class="text-start">{{ $transaction->description }}</td>
-            <td>{{ $transaction->type == 'income' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
-            <td>{{ $transaction->type == 'expense' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
-            <td>{{ $transaction->date }}</td>
+        @if ($transactions->count())
+          @foreach ( $transactions as $transaction)
+          <tr class="text-center">
+            <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $transaction->category->name }}</td>
+              <td class="text-start">{{ $transaction->description }}</td>
+              <td>{{ $transaction->type == 'income' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
+              <td>{{ $transaction->type == 'expense' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
+              <td>{{ $transaction->date }}</td>
+            </tr>
+          @endforeach
+        @else
+          <tr>
+            <td colspan="6" class="text-center">No data available</td>
           </tr>
-        @endforeach
+        @endif
       </tbody>
     </table>
-    {{-- {{ $transactions->links() }} --}}
   </div>
 </div>
