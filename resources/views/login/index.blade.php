@@ -24,13 +24,6 @@
                 </div>
                 <div class="col-md-6 col-lg-7 d-flex align-items-center">
                   <div class="card-body p-4 p-lg-5 text-black">
-
-                    @if (session()->has('success'))
-                      <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                    @endif
                     
                     @if (session()->has('loginError'))
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">

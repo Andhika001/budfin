@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -11,6 +12,13 @@ class RegisterController extends Controller
     {
         return view('register.index', [
             'title' => 'Register'
+        ]);
+    }
+
+    public function indexBalance()
+    {
+        return view('register.register-2', [
+            'title' => 'Register 2'
         ]);
     }
 
@@ -28,6 +36,36 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Registration successful!');
+        // credentials with no validation
+        $credentials = $request->only('username', 'password');
+
+        // auth registered user
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('/balance')->with('success', 'Registration successful!');
+        }
+
+        // $validatedBalance = $request->validate([
+        //     'balance' => 'numeric',
+        // ]);
+
+        // $user = User::where('username', $validatedData['username'])->first();
+        // $user->balance()->create($validatedBalance);
+
+        // // auto login after register
+        // Auth::login($user);
+
+    }
+
+    public function balance(Request $request)
+    {
+        // add balance to user
+        User::where('username', Auth::user()->username)->update([
+            // if balance null then 0
+            'balance' => $request->balance ?? 0
+        ]);
+
+        return redirect('/dashboard')->with('success', 'Balance added successfully');
     }
 }
