@@ -2,7 +2,7 @@
 <div class="card card-body">
   <form class="row" action="/transactions" method="post">
     @csrf
-    <div class="col-md-2">
+    <div class="mb-md-0 mb-3 col-md-2">
       <label for="category" class="visually-hidden">Category</label>
       <select class="form-select" name="category" id="category">
         @foreach ($categories->where('type', 'income') as $category)
@@ -10,19 +10,19 @@
         @endforeach
       </select>
     </div>
-    <div class="col-md-3">
+    <div class="mb-md-0 mb-3 col-md-3">
       <label for="description" class="visually-hidden">Description</label>
       <input type="text" class="form-control" id="description" placeholder="Description" name="description" required>
     </div>
-    <div class="col-md-3">
+    <div class="mb-md-0 mb-3 col-md-3">
       <label for="amount" class="visually-hidden">Amount</label>
       <input type="number" class="form-control" id="amount" placeholder="Amount" name="amount" required>
     </div>
-    <div class="col-md-2">
+    <div class="mb-md-0 mb-3 col-md-2">
       <label for="date" class="visually-hidden">Date</label>
       <input type="date" class="form-control" id="date1" name="date">
     </div>
-    <div class="col-md-2 d-grid">
+    <div class="mb-md-0 mb-3 col-md-2 d-grid">
       <input type="text" class="visually-hidden" id="type" name="type" value="income">
       <button type="submit" class="btn btn-success">Add Income</button>
     </div>
@@ -33,7 +33,7 @@
 <div class="card card-body mt-3">
   <form class="row" action="/transactions" method="post">
     @csrf
-    <div class="col-md-2">
+    <div class="mb-md-0 mb-3 col-md-2">
       <label for="category" class="visually-hidden">Category</label>
       <select class="form-select" name="category" id="category">
         @foreach ($categories->where('type', 'expense') as $category)
@@ -41,19 +41,19 @@
         @endforeach
       </select>
     </div>
-    <div class="col-md-3">
+    <div class="mb-md-0 mb-3 col-md-3">
       <label for="description" class="visually-hidden">Description</label>
       <input type="text" class="form-control" id="description" placeholder="Description" name="description" required>
     </div>
-    <div class="col-md-3">
+    <div class="mb-md-0 mb-3 col-md-3">
       <label for="amount" class="visually-hidden">Amount</label>
       <input type="number" class="form-control" id="amount" placeholder="Amount" name="amount" required>
     </div>
-    <div class="col-md-2">
+    <div class="mb-md-0 mb-3 col-md-2">
       <label for="date" class="visually-hidden">Date</label>
       <input type="date" class="form-control" id="date2" name="date">
     </div>
-    <div class="col-md-2 d-grid">
+    <div class="mb-md-0 mb-3 col-md-2 d-grid">
       <input type="text" class="visually-hidden" id="type" name="type" value="expense">
       <button type="submit" class="btn btn-danger">Add Expense</button>
     </div>
