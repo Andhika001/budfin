@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WalletController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
@@ -35,8 +36,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 
 Route::resource('/transactions', TransactionController::class)->middleware('auth');
 
-// // create route to show incomes only
-// Route::get('/incomes', [TransactionController::class, 'incomes'])->middleware('auth');
-
-// // use route binding to show transaction type Income and Expense
-// Route::get('/transactions', TransactionController::class)->middleware('auth');
+Route::resource('/wallets', WalletController::class)->middleware('auth');

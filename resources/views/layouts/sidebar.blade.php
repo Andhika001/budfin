@@ -12,7 +12,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('wallet') ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ Request::is('wallets') ? 'active' : '' }}" href="/wallets">
           <h6><i class="fa-solid fa-wallet"></i> Wallet</h6>
         </a>
       </li>
