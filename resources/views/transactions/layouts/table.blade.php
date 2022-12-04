@@ -1,7 +1,7 @@
 <div class="mt-2">
   <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead class="table-dark">
+    <table class="table table-striped table-border" id="myTable">
+      <thead>
         <tr class="text-center">
           <th scope="col">#</th>
           <th scope="col">Category</th>
@@ -39,6 +39,5 @@
         @endforeach
       </tbody>
     </table>
-    {{ $transactions->links() }}
   </div>
 </div>
