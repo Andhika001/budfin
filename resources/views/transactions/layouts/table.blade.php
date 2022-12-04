@@ -1,6 +1,6 @@
 <div class="mt-2">
   <div class="table-responsive">
-    <table class="table table-striped table-border" id="myTable">
+    <table class="table table-borderless cell-border hover stripe" id="myTable">
       <thead>
         <tr class="text-center">
           <th scope="col">#</th>
@@ -25,14 +25,14 @@
             <td>{{ $transaction->date }}</td>
             <td>
               @if (isset($transaction))
-                <a href="../../transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning">Edit</span></a>
+                <a href="../../transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</span></a>
               @else
-                <a href="/transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning">Edit</span></a>
+                <a href="/transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</span></a>
               @endif
               <form action="/transactions/{{ $transaction->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
-                <button type="submit" class="border-0 p-0 ms-1" onclick="return confirm('Are you sure?')"><span class="btn btn-sm text-bg-danger">Delete</span></button>
+                <button type="submit" class="border-0 p-0 ms-1" onclick="return confirm('Are you sure?')"><span class="btn btn-sm text-bg-danger"><i class="fa-solid fa-trash"></i></span></button>
               </form>
             </td>
           </tr>

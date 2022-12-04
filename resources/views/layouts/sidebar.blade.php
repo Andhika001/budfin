@@ -3,22 +3,22 @@
     <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
-          <h6>Dashboard</h6>
+          <h6><i class="fa-solid fa-house"></i> Dashboard</h6>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link {{ Request::is('transactions', 'transactions*') ? 'active' : '' }}" href="/transactions">
-          <h6>All Transactions</h6>
+          <h6><i class="fa-solid fa-money-bill-transfer"></i> All Transactions</h6>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link {{ Request::is('wallet') ? 'active' : '' }}" href="#">
-          <h6>Wallet</h6>
+          <h6><i class="fa-solid fa-wallet"></i> Wallet</h6>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link {{ Request::is('reports') ? 'active' : '' }}" href="#">
-          <h6>Reports</h6>
+          <h6><i class="fa-solid fa-chart-line"></i> Reports</h6>
         </a>
     </ul>
 
@@ -63,19 +63,19 @@
         <li class="nav-item">
           <div class="btn-group dropup">
             <button class="nav-link dropdown-toggle border-0" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:transparent">
-              Profile
+              <i class="fa-solid fa-user"></i> Profile
             </button>
             <ul class="dropdown-menu">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Setting
+                  <i class="fa-solid fa-gear"></i> Setting
                 </a>
               </li>
               <li class="nav-item">
                 <form action="/logout" method="post">
                   @csrf
                   <button class="nav-link border-0" type="submit" style="background-color:transparent">
-                    Logout
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
                   </button>
                 </form>
               </li>

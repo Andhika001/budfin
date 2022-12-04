@@ -42,9 +42,18 @@
       $(document).ready( function () {
         $('#myTable').DataTable({
           "scrollY": "481px",
-          "scrollCollapse": false
+          "scrollCollapse": false,
+          "columns": [
+            { "width": "5%" },
+            { "width": "15%" },
+            { "width": "25%" },
+            { "width": "15%" },
+            { "width": "15%" },
+            { "width": "10%" },
+            { "width": "15%" }
+          ]
         });
-      } );
+      });
     </script>
   </body>
 </html>
