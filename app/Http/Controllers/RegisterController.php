@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -35,6 +36,26 @@ class RegisterController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);
+
+        // create 3 data in wallets table with new user
+        Wallet::create([
+            'user_id' => User::where('username', $validatedData['username'])->first()->id,
+            'name' => 'cash',
+            'type' => 'cash',
+            'amount' => 0
+        ]);
+        Wallet::create([
+            'user_id' => User::where('username', $validatedData['username'])->first()->id,
+            'name' => 'people_debt',
+            'type' => 'debt',
+            'amount' => 0
+        ]);
+        Wallet::create([
+            'user_id' => User::where('username', $validatedData['username'])->first()->id,
+            'name' => 'your_debt',
+            'type' => 'debt',
+            'amount' => 0
+        ]);
 
         // credentials with no validation
         $credentials = $request->only('username', 'password');
