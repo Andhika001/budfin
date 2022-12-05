@@ -19,12 +19,6 @@
               <div class="row">
                 <div class="d-flex align-items-center">
                   <div class="card-body p-4 p-lg-4 text-black">
-                    @if (session()->has('success'))
-                      <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                    @endif
 
                     <form action="/balance" method="post" autocomplete="on">
                       @csrf
@@ -54,6 +48,7 @@
         </div>
       </div>
     </section>
-
+    {{-- Sweet Alert --}}
+    @include('sweetalert::alert')
   </body>
 </html>

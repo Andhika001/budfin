@@ -87,6 +87,6 @@ class RegisterController extends Controller
             'balance' => $request->balance ?? 0
         ]);
 
-        return redirect('/dashboard')->with('success', 'Balance added successfully');
+        return redirect('/dashboard');
     }
 }
