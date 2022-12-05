@@ -77,4 +77,20 @@
       </div>
     </div>
   @endforeach
+
+  {{-- Create add card --}}
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-secondary shadow h-100 py-2" style="border: 1px dashed;">
+      <div class="card-body d-flex justify-content-center">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold mb-1 text-uppercase text-secondary"></div>
+            <a href="{{ route('wallets.create') }}" class="btn text-muted stretched-link">
+              <i class="fa-solid fa-plus"></i> Add New Wallet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
