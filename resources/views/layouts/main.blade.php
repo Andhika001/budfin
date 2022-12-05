@@ -29,6 +29,8 @@
         </main>
       </div>
     </div>
+    {{-- Sweet Alert --}}
+    @include('sweetalert::alert')
     {{-- Jquery --}}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     {{-- Data Tables JS --}}
