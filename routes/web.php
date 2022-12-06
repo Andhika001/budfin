@@ -37,3 +37,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/transactions', TransactionController::class)->middleware('auth');
 
 Route::resource('/wallets', WalletController::class)->middleware('auth');
+Route::post('/wallets/delete', [WalletController::class, 'destroyWallets'])->middleware('auth');

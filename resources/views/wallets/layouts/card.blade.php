@@ -160,7 +160,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/wallets" method="POST">
+        {{-- form delete 1 or multiple data --}}
+        <form action="/wallets/delete" method="POST">
           @csrf
           <h6 class="mb-3">Choose which wallet do you want to delete</h6>
           <div class="mb-3">
@@ -170,15 +171,9 @@
               @endif
               {{-- make checkbox looks button --}}
               <div class="btn-group me-2 mb-3" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="checkbox" class="btn-check" id="{{ $wallet->id }}" name="wallet_id" value="{{ $wallet->id }}">
+                <input type="checkbox" class="btn-check" id="{{ $wallet->id }}" name="ids[{{ $wallet->id }}]" value="{{ $wallet->id }}">
                 <label class="btn btn-outline-primary" for="{{ $wallet->id }}">{{ $wallet->name }}</label>
               </div>
-              {{-- <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="wallet_id" id="{{ $wallet->id }}" value="{{ $wallet->id }}">
-                <label class="form-check label" for="wallet_id">
-                  {{ $wallet->name }}
-                </label>
-              </div> --}}
             @endforeach
           </div>
           <button type="submit" class="btn btn-danger float-end mt-2">Delete</button>

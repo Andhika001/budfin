@@ -104,4 +104,13 @@ class WalletController extends Controller
     {
         //
     }
+
+    public function destroyWallets(Request $request)
+    {
+        $wallets = Wallet::whereIn('id', $request->wallets)->get();
+        foreach ($wallets as $wallet) {
+            $wallet->delete();
+        }
+        return redirect('/wallets')->with('success', 'Wallets deleted successfully');
+    }
 }
