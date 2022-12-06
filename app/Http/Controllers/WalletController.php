@@ -40,7 +40,24 @@ class WalletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // if validation failed then redirect back with error
+        $validatedData = $request->validate([
+            // unique validation for wallet name for each user
+            'name' => 'required|unique:wallets,name,NULL,id,user_id,' . auth()->user()->id,
+            'type' => 'required',
+            'amount' => 'required'
+        ]);
+
+        if ($validatedData) {
+            Wallet::create([
+                'user_id' => auth()->user()->id,
+                'name' => $validatedData['name'],
+                'type' => $validatedData['type'],
+                'amount' => $validatedData['amount']
+            ]);
+
+            return redirect('/wallets')->with('success', 'Wallet created successfully');
+        }
     }
 
     /**
