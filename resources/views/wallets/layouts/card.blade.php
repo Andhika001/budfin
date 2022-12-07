@@ -6,7 +6,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Cash</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="cash" ondblclick="updateWallet({{ $wallets->where('name', 'cash')->first()->id }}, 'cash')">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="cash" ondblclick="updateWallet({{ $wallets->where('name', 'cash')->first()->id }}, 'cash')">Rp
               {{ number_format( $wallets->where('name', 'cash')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -25,7 +25,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">people's debts</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="pdebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'pdebt')">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="pdebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'pdebt')">Rp
               {{ number_format( $wallets->where('name', 'people_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -44,7 +44,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Your Debt</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'ydebt')">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'ydebt')">Rp
               {{ number_format( $wallets->where('name', 'your_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -74,7 +74,7 @@
 
 </div>
 <hr>
-
+{{-- {{ $wallet->type === 'bank' ? 'border-primary' : 'border-secondary' }} --}}
 <div class="row">
   {{-- loop foreach that show all wallet in auth user --}}
   @foreach ($wallets as $wallet)
@@ -82,7 +82,15 @@
       @continue
     @endif
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border {{ $wallet->type === 'bank' ? 'border-primary' : 'border-secondary' }} border-end-0 border-top-0 border-bottom-0 border-4 shadow h-100 py-2">
+      <div class="card border
+      @if ($wallet->type === 'bank')
+        border-primary
+      @elseif ($wallet->type === 'ewallet')
+        border-warning
+      @elseif ($wallet->type === 'invested')
+        border-success
+      @endif
+      border-end-0 border-top-0 border-bottom-0 border-4 shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col">
@@ -90,7 +98,13 @@
               <div class="h5 mb-0 font-weight-bold text-gray-800" id="{{ $wallet->id }}" ondblclick="updateWallet({{ $wallet->id }}, '{{ $wallet->id }}')">Rp {{ number_format( $wallet->amount, 2,",",".") }}</div>
             </div>
             <div class="col-auto">
-              <i class="fa-solid fa-wallet fa-2x opacity-25"></i>
+              @if ($wallet->type === 'bank')
+                <i class="fa-solid fa-building-columns fa-2x opacity-25"></i>
+              @elseif ($wallet->type === 'ewallet')
+                <i class="fa-solid fa-wallet fa-2x opacity-25"></i>
+              @elseif ($wallet->type === 'invested')
+                <i class="fa-solid fa-chart-line fa-2x opacity-25"></i>
+              @endif
             </div>
           </div>
         </div>
