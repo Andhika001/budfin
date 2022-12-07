@@ -1,13 +1,12 @@
 <div class="row">
   {{-- Cash Wallet --}}
-  {{-- set id for this card to id cash --}}
   <div class="col-xl-3 col-md-6 mb-3">
     <div class="card border border-secondary border-end-0 border-top-0 border-bottom-0 border-4 shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Cash</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="cash" ondblclick="updateWallet({{ $wallets->where('name', 'cash')->first()->id }}, 'cash')">Rp 
               {{ number_format( $wallets->where('name', 'cash')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -26,7 +25,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">people's debts</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="pdebt">Rp 
               {{ number_format( $wallets->where('name', 'people_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -45,7 +44,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Your Debt</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt">Rp 
               {{ number_format( $wallets->where('name', 'your_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -176,9 +175,23 @@
               </div>
             @endforeach
           </div>
-          <button type="submit" class="btn btn-danger float-end mt-2">Delete</button>
+          <button type="submit" class="btn btn-danger float-end mt-2" onclick="return confirm('Are you sure?')">Delete</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  function updateWallet(id, idWallet) {
+    let wallet = document.getElementById(idWallet);
+    wallet.innerHTML = `
+      <form action="/wallets/${id}" method="POST">
+        @method('PUT')
+        @csrf
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="amount" required>
+        <button type="submit" class="visually-hidden">Update</button>
+      </form>
+    `;
+  }
+</script>

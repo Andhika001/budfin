@@ -91,7 +91,18 @@ class WalletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // update only amount
+        $validatedData = $request->validate([
+            'amount' => 'required'
+        ]);
+
+        if ($validatedData) {
+            Wallet::where('id', $id)->update([
+                'amount' => $validatedData['amount']
+            ]);
+        }
+
+        return redirect('/wallets')->with('success', 'Wallet updated successfully');
     }
 
     /**
