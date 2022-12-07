@@ -25,7 +25,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">people's debts</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="pdebt">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="pdebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'pdebt')">Rp 
               {{ number_format( $wallets->where('name', 'people_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -44,7 +44,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Your Debt</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt">Rp 
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'ydebt')">Rp 
               {{ number_format( $wallets->where('name', 'your_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -87,7 +87,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col">
               <div class="text-xs font-weight-bold text-uppercase mb-1 {{ $wallet->type === 'bank' ? 'text-primary' : 'text-secondary' }}">{{ $wallet->name }}</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Rp {{ number_format( $wallet->amount, 2,",",".") }}</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" id="{{ $wallet->id }}" ondblclick="updateWallet({{ $wallet->id }}, '{{ $wallet->id }}')">Rp {{ number_format( $wallet->amount, 2,",",".") }}</div>
             </div>
             <div class="col-auto">
               <i class="fa-solid fa-wallet fa-2x opacity-25"></i>
@@ -189,7 +189,7 @@
       <form action="/wallets/${id}" method="POST">
         @method('PUT')
         @csrf
-        <input type="number" class="form-control" id="amount" name="amount" placeholder="amount" required>
+        <input type="number" class="form-control form-control-sm" id="amount" name="amount" placeholder="amount" required>
         <button type="submit" class="visually-hidden">Update</button>
       </form>
     `;
