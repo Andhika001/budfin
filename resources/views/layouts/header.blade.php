@@ -4,9 +4,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   {{-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"> --}}
-  <div class="navbar-nav">
+  {{-- <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <a class="nav-link px-4 bg-dark text-white border-0" href="/">Back</a>
     </div>
-  </div>
+  </div> --}}
 </header>
