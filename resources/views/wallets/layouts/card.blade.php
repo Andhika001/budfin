@@ -162,7 +162,7 @@
         {{-- form delete 1 or multiple data --}}
         <form action="/wallets/delete" method="POST">
           @csrf
-          <h6 class="mb-3">Choose which wallet do you want to delete</h6>
+          <p class="mb-3">Choose which wallet do you want to delete</p>
           <div class="mb-3">
             @foreach ($wallets as $wallet)
               @if ($wallet->type === 'cash' || $wallet->type === 'debt')
@@ -170,8 +170,8 @@
               @endif
               {{-- make checkbox looks button --}}
               <div class="btn-group me-2 mb-3" role="group" aria-label="Basic checkbox toggle button group">
-                <input type="checkbox" class="btn-check" id="{{ $wallet->id }}" name="ids[{{ $wallet->id }}]" value="{{ $wallet->id }}">
-                <label class="btn btn-outline-primary" for="{{ $wallet->id }}">{{ $wallet->name }}</label>
+                <input type="checkbox" class="btn-check" id="id{{ $wallet->id }}" name="ids[{{ $wallet->id }}]" value="{{ $wallet->id }}" autocomplete="off">
+                <label class="btn btn-outline-primary" for="id{{ $wallet->id }}">{{ $wallet->name }}</label>
               </div>
             @endforeach
           </div>
@@ -183,6 +183,14 @@
 </div>
 
 <script>
+  // make button in modal delete checkable
+  const btns = document.querySelectorAll('.btn-check');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+    });
+  });
+
   function updateWallet(id, idWallet) {
     let wallet = document.getElementById(idWallet);
     wallet.innerHTML = `
