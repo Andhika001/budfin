@@ -1,4 +1,25 @@
 <div class="row">
+
+  {{-- Total Wallet --}}
+  <div class="col-xl-3 col-md-6 mb-3">
+    <div class="card border border-primary border-end-0 border-top-0 border-bottom-0 border-4 shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="total">
+              {{-- sum amount except your_debt and substract with your_debt --}}
+              Rp {{ number_format( $total, 2,",",".") }}
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fa-solid fa-wallet fa-2x opacity-25"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {{-- Cash Wallet --}}
   <div class="col-xl-3 col-md-6 mb-3">
     <div class="card border border-secondary border-end-0 border-top-0 border-bottom-0 border-4 shadow h-100 py-2">
@@ -44,7 +65,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Your Debt</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt" ondblclick="updateWallet({{ $wallets->where('name', 'people_debt')->first()->id }}, 'ydebt')">Rp
+            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ydebt" ondblclick="updateDebt({{ $wallets->where('name', 'your_debt')->first()->id }}, 'ydebt', 'your_debt')">Rp
               {{ number_format( $wallets->where('name', 'your_debt')->first()->amount, 2,",",".") }}
             </div>
           </div>
@@ -212,6 +233,19 @@
         @method('PUT')
         @csrf
         <input type="number" class="form-control form-control-sm" id="amount" name="amount" placeholder="amount" required>
+        <button type="submit" class="visually-hidden">Update</button>
+      </form>
+    `;
+  }
+
+  function updateDebt(id, idWallet, name) {
+    let wallet = document.getElementById(idWallet);
+    wallet.innerHTML = `
+      <form action="/wallets/${id}" method="POST">
+        @method('PUT')
+        @csrf
+        <input type="number" class="form-control form-control-sm" id="amount" name="amount" placeholder="amount" required>
+        <input type="hidden" name="name" value="${name}">
         <button type="submit" class="visually-hidden">Update</button>
       </form>
     `;

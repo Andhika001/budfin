@@ -16,9 +16,11 @@ class WalletController extends Controller
   public function index()
   {
     $wallets = Wallet::where('user_id', Auth::id())->get();
+    $total = Wallet::where('user_id', Auth::id())->sum('amount');
     return view('wallets.index', [
       'title' => 'Wallet',
-      'wallets' => $wallets
+      'wallets' => $wallets,
+      'total' => $total
     ]);
   }
 
@@ -95,6 +97,11 @@ class WalletController extends Controller
     $validatedData = $request->validate([
       'amount' => 'required'
     ]);
+
+    // if validatedData name is your_debt then amount is negative
+    if ($request['name'] == 'your_debt') {
+      $validatedData['amount'] = -$validatedData['amount'];
+    }
 
     if ($validatedData) {
       Wallet::where('id', $id)->update([
