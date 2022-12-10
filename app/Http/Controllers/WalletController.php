@@ -118,11 +118,10 @@ class WalletController extends Controller
 
   public function destroyWallets(Request $request)
   {
-    // validate ids
     $validatedData = $request->validate([
       'ids' => 'required'
     ]);
-    $ids = $validatedData;
+    $ids = $validatedData['ids'];
     Wallet::whereIn('id', $ids)->delete();
     return redirect('/wallets')->with('success', 'Wallets deleted successfully');
   }

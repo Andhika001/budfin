@@ -54,7 +54,7 @@
         </a>
       </li>
     </ul> --}}
-    
+
     <div class="position-absolute bottom-0 mb-2">
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
         <span>Account</span>
@@ -67,7 +67,7 @@
             </button>
             <ul class="dropdown-menu">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/profile">
                   <i class="fa-solid fa-gear"></i> Setting
                 </a>
               </li>

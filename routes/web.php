@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\RegisterController;
@@ -33,6 +34,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/balance', [RegisterController::class, 'balance']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
 
 Route::resource('/transactions', TransactionController::class)->middleware('auth');
 

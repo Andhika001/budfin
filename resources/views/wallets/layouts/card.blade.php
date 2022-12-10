@@ -56,22 +56,6 @@
     </div>
   </div>
 
-  {{-- Delete wallet card --}}
-  <div class="col-xl-3 col-md-6 mb-3">
-    <div class="card border-secondary shadow h-100 py-2" style="border: 1px dashed;">
-      <div class="card-body d-flex justify-content-center">
-        <div class="row no-gutters align-items-center">
-          <div class="col">
-            <div class="text-xs font-weight-bold mb-1 text-uppercase text-secondary"></div>
-            <a href="" class="btn text-muted stretched-link" data-bs-toggle="modal" data-bs-target="#deleteWallet">
-              <i class="fa-solid fa-trash"></i> Delete Wallet
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 <hr>
 {{-- {{ $wallet->type === 'bank' ? 'border-primary' : 'border-secondary' }} --}}
@@ -113,14 +97,30 @@
   @endforeach
 
   {{-- Create add card --}}
-  <div class="col-xl-3 col-md-6 mb-4">
+  <div class="col-xl-2 col-md-3 mb-4">
     <div class="card border-secondary shadow h-100 py-2" style="border: 1px dashed;">
       <div class="card-body d-flex justify-content-center">
         <div class="row no-gutters align-items-center">
           <div class="col">
             <div class="text-xs font-weight-bold mb-1 text-uppercase text-secondary"></div>
             <a href="" class="btn text-muted stretched-link" data-bs-toggle="modal" data-bs-target="#createWallet">
-              <i class="fa-solid fa-plus"></i> Add New Wallet
+              <i class="fa-solid fa-plus"></i> Add Wallet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Delete wallet card --}}
+  <div class="col-xl-1 col-md-3 mb-4">
+    <div class="card border-secondary shadow h-100 py-2" style="border: 1px dashed;">
+      <div class="card-body d-flex justify-content-center">
+        <div class="row no-gutters align-items-center">
+          <div class="col">
+            <div class="text-xs font-weight-bold mb-1 text-uppercase text-secondary"></div>
+            <a href="" class="btn text-muted stretched-link" data-bs-toggle="modal" data-bs-target="#deleteWallet">
+              <i class="fa-solid fa-trash"></i>
             </a>
           </div>
         </div>
