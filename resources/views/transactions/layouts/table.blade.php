@@ -3,7 +3,7 @@
     <table class="table table-borderless cell-border hover stripe" id="myTable">
       <thead>
         <tr class="text-center">
-          <th scope="col">#</th>
+          <th scope="col"> </th>
           <th scope="col">Category</th>
           <th scope="col">Description</th>
           <th scope="col">Income (Rp)</th>
