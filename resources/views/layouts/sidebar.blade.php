@@ -17,7 +17,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('reports') ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ Request::is('reports') ? 'active' : '' }}" href="/reports">
           <h6><i class="fa-solid fa-chart-line"></i> Reports</h6>
         </a>
     </ul>

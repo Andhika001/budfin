@@ -122,4 +122,15 @@ class TransactionController extends Controller
 
         return redirect('/transactions')->with('success', 'Transaction deleted successfully');
     }
+
+    public function reports() {
+        $transactions = Transaction::where('user_id', Auth::id())->whereDate('date', date('Y-m-d'))->with('category')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('reports.index', [
+            'title' => 'Transaction',
+            'user' => auth()->user(),
+            'transactions' => $transactions,
+            'categories' => Category::all()
+        ]);
+    }
 }
