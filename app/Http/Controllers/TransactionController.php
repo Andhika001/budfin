@@ -124,7 +124,7 @@ class TransactionController extends Controller
     }
 
     public function reports() {
-        $transactions = Transaction::where('user_id', Auth::id())->whereDate('date', date('Y-m-d'))->with('category')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->paginate(10);
+        $transactions = Transaction::where('user_id', Auth::id())->with('category')->orderBy('date', 'desc')->orderBy('created_at', 'desc')->get();
 
         return view('reports.index', [
             'title' => 'Transaction',

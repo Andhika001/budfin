@@ -10,14 +10,9 @@
   {{-- Balance, Incomes, Expenses, and Transaction --}}
   @include('layouts.card')
 
-  {{-- List of Transaction Today --}}
-  <div class="card mt-3">
-    <div class="card-header">
-      Today Transactions
-    </div>
-    <div class="card-body">
-      @include('layouts.table')
-    </div>
+  {{-- List of Transactions --}}
+  <div class="mb-4">
+    @include('reports.layouts.table')
   </div>
 
 @endsection
