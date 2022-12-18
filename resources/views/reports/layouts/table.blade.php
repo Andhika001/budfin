@@ -9,12 +9,11 @@
           <th scope="col">Income (Rp)</th>
           <th scope="col">Expense (Rp)</th>
           <th scope="col">Date</th>
-          <th scope="col">Action</th>
+          <th scope="col">Date</th>
         </tr>
       </thead>
       <tbody>
         {{-- Summary --}}
-        {{-- @foreach ( auth()->user()->transactions()->orderBy('created_at', 'desc')->paginate(5) as $transaction) --}}
         @foreach ( $transactions as $transaction)
         <tr class="text-center">
           <th scope="row">{{ $loop->iteration }}</th>
@@ -23,18 +22,7 @@
             <td>{{ $transaction->type == 'income' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
             <td>{{ $transaction->type == 'expense' ? number_format($transaction->amount, 2,",",".") : '-' }}</td>
             <td>{{ $transaction->date }}</td>
-            <td>
-              @if (isset($transaction))
-                <a href="../../transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</span></a>
-              @else
-                <a href="/transactions/{{ $transaction->id }}/edit"><span class="btn btn-sm text-bg-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</span></a>
-              @endif
-              <form action="/transactions/{{ $transaction->id }}" method="post" class="d-inline">
-                @method('delete')
-                @csrf
-                <button type="submit" class="border-0 p-0 ms-1" onclick="return confirm('Are you sure?')"><span class="btn btn-sm text-bg-danger"><i class="fa-solid fa-trash"></i></span></button>
-              </form>
-            </td>
+            <td>{{ $transaction->date }}</td>
           </tr>
         @endforeach
       </tbody>

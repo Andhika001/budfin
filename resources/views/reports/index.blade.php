@@ -8,7 +8,7 @@
   </div>
 
   {{-- Balance, Incomes, Expenses, and Transaction --}}
-  @include('layouts.card')
+  @include('reports.layouts.card')
 
   {{-- List of Transactions --}}
   <div class="mb-4">
